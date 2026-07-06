@@ -1,4 +1,4 @@
-# AuriCheck — Spurious Gold Detection (Working Prototype)
+# AuriCheck — Spurious Gold Detection
 
 Non-destructive verification of pledged gold for gold-loan appraisal.
 Fuses **density (Archimedes) + ultrasonic velocity + eddy-current
