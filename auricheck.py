@@ -131,10 +131,11 @@ def analyze(karat: int, weight_air: float, weight_water: float | None,
     phys = [s.deviation for s in signals
             if key_of[s.name] in ("density", "velocity", "conductivity")]
     max_phys = max(phys) if phys else 0.0
+    max_any = max((s.deviation for s in signals), default=0.0)
     if risk >= 50 or max_phys >= 65:
         verdict = "FAIL"          # a hard physical impossibility is decisive
-    elif risk >= 20 or max_phys >= 30 or len(phys) < 2:
-        verdict = "REVIEW"        # one anomaly, or too few signals to trust PASS
+    elif risk >= 20 or max_any >= 30 or len(phys) < 2:
+        verdict = "REVIEW"        # any flagged signal, or too few signals, blocks PASS
     else:
         verdict = "PASS"
 
